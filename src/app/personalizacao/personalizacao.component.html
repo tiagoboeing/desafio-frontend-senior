@@ -1,0 +1,24 @@
+<h1>Personalize o sistema</h1>
+<p>Não armazena as alterações, apenas preview!</p>
+
+<div class="row">
+    <div class="col" (click)="personalizaBarraSuperior('azul')">
+        <div style="width: 80px; height: 80px;" class="bg-primary rounded"></div>
+        AZUL
+    </div>
+
+    <div class="col" (click)="personalizaBarraSuperior('vermelho')">
+        <div style="width: 80px; height: 80px;" class="bg-danger rounded"></div>
+        VERMELHO
+    </div>
+
+    <div class="col" (click)="personalizaBarraSuperior('amarelo')">
+        <div style="width: 80px; height: 80px;" class="bg-warning rounded"></div>
+        AMARELO
+    </div>
+
+    <div class="col" (click)="personalizaBarraSuperior('')">
+        <div style="width: 80px; height: 80px;" class="padrao rounded"></div>
+        PADRÃO
+    </div>
+</div>

@@ -25,6 +25,10 @@ export class HomeComponent implements OnInit {
         this.corBarraSuperior = 'bg-danger';
         break;
 
+      case 'amarelo':
+        this.corBarraSuperior = 'bg-warning';
+        break;
+
       default:
         this.corBarraSuperior = 'navbar-color';
         break;

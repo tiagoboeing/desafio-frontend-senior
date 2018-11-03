@@ -1,3 +1,144 @@
-<p>
-  cadastro works!
-</p>
+<!-- breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#" [routerLink]="['/']">Home</a></li>
+    <li class="breadcrumb-item"><a href="#" [routerLink]="['/listagem']">Listagem</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Cadastrar novo item</li>
+  </ol>
+</nav>
+<!-- /breadcrumb -->
+
+<h1>Cadastrar item</h1>
+<form class="form-group needs-validation" [formGroup]="itemForm" novalidate>
+
+  <!-- nome -->
+  <div class="row mt-4">
+    <div class="col-12 form-group">
+      <label for="nome">Nome do item <span class="text-danger">*</span></label>
+      <input class="form-control form-control-lg" name="nome" 
+        formControlName="nome" id="nome" placeholder="Ex.: Macbook Pro 14' Tela retina"
+        [class.is-valid]="(!input.nome.errors && input.nome.valid) && (input.nome.dirty || input.nome.touched)"
+        [class.is-invalid]="(input.nome.errors && !input.nome.valid) && (input.nome.dirty || input.nome.touched)"/>
+    
+        <div class="valid-feedback text-right"><i class="fas fa-check"></i> Ok!</div>
+        <div class="invalid-feedback text-right"><i class="fas fa-times"></i> Campo obrigatório e máximo 50 caracteres!</div>
+    </div>
+  </div>
+  <!-- /nome -->
+
+  <div class="row">
+    
+    <!-- preço -->
+    <div class="col-12 col-sm-12 col-md-4 col-lg-4 form-group">
+      <label for="preco">Preço <span class="text-danger">*</span></label>
+      <input class="form-control form-control-lg rounded" currencyMask
+        name="preco" id="preco" formControlName="preco" maxlength="20"
+        [class.is-valid]="(!input.preco.errors && input.preco.valid) && (input.preco.dirty || input.preco.touched)"
+        [class.is-invalid]="(input.preco.errors && !input.preco.valid) && (input.preco.dirty || input.preco.touched)">
+
+        <div class="valid-feedback"><i class="fas fa-check"></i> Ok!</div>
+        <div class="invalid-feedback"><i class="fas fa-times"></i> Campo obrigatório!</div>
+    </div>
+    <!-- /preço -->
+
+    <!-- quantidade -->
+    <div class="col-6 col-sm-6 col-md-4 col-lg-4 form-group">
+      <label for="quantidade">Quantidade</label>
+      <input class="form-control form-control-lg rounded"
+        name="quantidade" id="quantidade" formControlName="quantidade" [textMask]="{mask: useMask()}"
+        [class.is-valid]="(!input.quantidade.errors && input.quantidade.valid) && (input.quantidade.dirty || input.quantidade.touched)"
+        [class.is-invalid]="(input.quantidade.errors && !input.quantidade.valid) && (input.quantidade.dirty || input.quantidade.touched)">
+
+        <div class="valid-feedback"><i class="fas fa-check"></i> Ok!</div>
+        <div class="invalid-feedback"><i class="fas fa-times"></i> Campo obrigatório!</div>
+    </div>
+    <!-- /quantidade -->
+
+    <!-- unidade de medida -->
+    <div class="col-6 col-sm-6 col-md-4 col-lg-4 form-group">
+      <label for="unidadeMedida">Unidade <span class="text-danger">*</span></label>
+      <select class="custom-select custom-select-lg mr-sm-2" 
+        id="unidadeMedida" name="unidadeMedida" formControlName="unidadeMedida"
+        [class.is-valid]="(!input.unidadeMedida.errors && input.unidadeMedida.valid) && (input.unidadeMedida.dirty || input.unidadeMedida.touched)"
+        [class.is-invalid]="(input.unidadeMedida.errors && !input.unidadeMedida.valid) && (input.unidadeMedida.dirty || input.unidadeMedida.touched)">
+        <option value="Unidade" selected>Unidades (un)</option>
+        <option value="Litro">Litros (lt)</option>
+        <option value="Quilograma">Quilogramas (kg)</option>
+      </select>
+
+      <div class="valid-feedback"><i class="fas fa-check"></i> Ok!</div>
+      <div class="invalid-feedback"><i class="fas fa-times"></i> Campo obrigatório!</div>
+    </div>
+    <!-- /unidade de medida -->
+
+  </div>
+
+  <!-- Produto perecível? -->
+  <div class="row mt-2">
+    <div class="col-12">
+      <div class="custom-control custom-checkbox mr-sm-2">
+        <input type="checkbox" class="custom-control-input" checked
+          id="perecivel" name="perecivel" formControlName="perecivel"
+          [class.is-valid]="(!input.perecivel.errors && input.perecivel.valid) && (input.perecivel.dirty || input.perecivel.touched)"
+          [class.is-invalid]="(input.perecivel.errors && !input.perecivel.valid) && (input.perecivel.dirty || input.perecivel.touched)">
+        <label class="custom-control-label" for="perecivel">Produto perecível</label>
+      </div>
+    </div>
+  </div>
+  <!-- /Produto perecível? -->
+
+
+  <div class="row mt-4">
+
+    <!-- fabricacao -->
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+      <label for="fabricacao">Data de fabricação <span class="text-danger">*</span></label>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-calendar text-success"></i></span>
+        </div>
+        <input type="date" id="fabricacao" name="fabricacao" formControlName="fabricacao" 
+          class="form-control form-control-lg"
+          [class.is-valid]="(!input.fabricacao.errors && input.fabricacao.valid) && (input.fabricacao.dirty || input.fabricacao.touched)"
+          [class.is-invalid]="(input.fabricacao.errors && !input.fabricacao.valid) && (input.fabricacao.dirty || input.fabricacao.touched)">
+
+          <div class="valid-feedback text-right"><i class="fas fa-check"></i> Ok!</div>
+          <div class="invalid-feedback text-right"><i class="fas fa-times"></i> Campo obrigatório!</div>
+      </div>
+    </div>
+    <!-- /fabricacao -->
+    
+    <!-- validade -->
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+      <label for="validade">Data de validade <span class="text-danger">*</span></label>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-calendar-alt text-danger"></i></span>
+        </div>
+        <input type="date" id="validade" name="validade" formControlName="validade" 
+          class="form-control form-control-lg" [required]="checaPerecivel()"
+          [class.is-valid]="(!input.validade.errors && input.validade.valid) && (input.validade.dirty || input.validade.touched)"
+          [class.is-invalid]="(input.validade.errors && !input.validade.valid) && (input.validade.dirty || input.validade.touched)">
+
+          <div class="valid-feedback text-right"><i class="fas fa-check"></i> Ok!</div>
+          <div class="invalid-feedback text-right" *ngIf="itemForm.get('validade').dirty && itemForm.validade.errors.required"><i class="fas fa-times"></i> Campo obrigatório!</div>
+          <div class="invalid-feedback text-right" *ngIf="itemForm.get('validade').dirty && itemForm.get('validade').errors && itemForm.get('validade').errors.validade"><i class="fas fa-times"></i> Item vencido!</div>
+      </div>
+    </div>
+    <!-- /validade -->
+    
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <button type="submit" (click)="salvar(itemForm.value)" class="btn btn-lg btn-success ml-1 fa-pull-right" [disabled]="!itemForm.valid">SALVAR <i class="fa fa-check"></i></button>
+      <button class="btn btn-lg btn-secondary mr-1 fa-pull-right" (click)="cancelar()">CANCELAR</button>
+    </div>
+  </div>
+
+  Valores: {{itemForm.value | json}} <br>
+  Válido? {{itemForm.valid}}
+
+</form>
+
+

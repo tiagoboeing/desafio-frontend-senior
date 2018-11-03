@@ -1,0 +1,97 @@
+import { Injectable, Output, EventEmitter } from '@angular/core';
+import { Item } from './item.model';
+import { BehaviorSubject } from 'rxjs';
+
+@Injectable()
+export class ItemService {
+
+  // emite eventos de alterações na lista
+  @Output() listarItens = new EventEmitter<Item[]>();
+
+
+  // public itens: BehaviorSubject<any> = JSON.parse(localStorage.getItem('itens'));
+
+  // apenas para manipulação no serviço
+  dados: Item[];
+
+  // primeiro carregamento
+  preencheDados() {
+    this.listarItens.emit(JSON.parse(localStorage.getItem('itens')));
+  }
+
+
+  // listar() {
+  //   this.dados = JSON.parse(localStorage.getItem('itens'));
+
+  //   // emitimos evento informando que houve alteração na lista
+  //   this.listarItens.emit(this.dados);
+  // }
+
+
+  // listaItens(): Observable<any> {
+  //   return this.lista.asObservable();
+  // }
+
+  // // recebemos um array qualquer e guardamos no localStorage
+  // guardaArray(itens: any[]) {
+  //   if (itens.length === 0) {
+  //     localStorage.removeItem('itens');
+  //   } else {
+  //     localStorage.removeItem('itens');
+  //     localStorage.setItem('itens', JSON.stringify(itens));
+  //   }
+  // }
+
+  // carrega dados fictícios para localStorage
+  cargaDados() {
+    this.dados = [];
+    this.dados.push({
+      id: 1541223639453,
+      nome: 'Soja 20kg',
+      preco: 2.8,
+      perecivel: true,
+      dataValidade: new Date(),
+      dataFabricacao: new Date(),
+      unidadeMedida: 'Quilograma',
+      quantidade: '20 un'
+    });
+    this.dados.push({
+      id: 1541223690478,
+      nome: 'Coca-Cola 2,5 lt',
+      preco: 5.47,
+      perecivel: true,
+      dataValidade: new Date('2018-06-21'),
+      dataFabricacao: new Date('2018-11-10'),
+      unidadeMedida: 'Litro',
+      quantidade: '2.5 lt'
+    });
+    this.dados.push({
+      id: 1541223702636,
+      nome: 'Produto nunca vence',
+      preco: 87.3,
+      perecivel: false,
+      dataValidade: null,
+      dataFabricacao: new Date('2017-12-10'),
+      unidadeMedida: 'Unidade',
+      quantidade: '53 un'
+    });
+    this.dados.push({
+      id: 1541223719061,
+      nome: 'Produto 3 casas decimais',
+      preco: 1.99,
+      perecivel: false,
+      dataValidade: null,
+      dataFabricacao: new Date('2018-08-01'),
+      unidadeMedida: 'Quilograma',
+      quantidade: '1.998 kg'
+    });
+
+    // guardamos os novos dados no localStorage
+    localStorage.setItem('itens', JSON.stringify(this.dados));
+
+    // emitimos evento informando que houve alteração na lista
+    this.listarItens.emit(JSON.parse(localStorage.getItem('itens')));
+  }
+
+
+}
