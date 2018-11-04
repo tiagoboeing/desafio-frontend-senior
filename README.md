@@ -31,4 +31,6 @@ O frontend (Angular) encontra-se no GitHub Pages, sendo assim a ativação é in
 - / - `ListagemComponent`
     - /listagem `ListagemComponent`
     - /cadastro `CadastroComponent`
+    - /editar/:id `CadastroComponent`
+    - /personalizacao `PersonalizacaoComponent`
 - ** `NotFoundComponent`
