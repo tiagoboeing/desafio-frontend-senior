@@ -4,13 +4,15 @@
 
 ## Considerações do autor
 
+- Implementei uma `fake API` utilizando JSON-Server (https://github.com/typicode/json-server), por permitir o tratamento dos dados de forma assíncrona mais rapidamente, melhor que ao utilizarmos `localStorage`. JSON-Server possui um endpoint gratuito para repositórios públicos: https://my-json-server.typicode.com/tiagoboeing/desafio-frontend-senior
+- Ao rodar `npm start` localmente a dependência Concurrently automatiza a tarefa, levantando a aplicação com `ng serve` + `json-server db.json` (https://www.npmjs.com/package/concurrently), tudo em um único comando. [`npm start`]
 - Como a tarefa não especifica quais campos devem ou não ser exibidos na tela de listagem, tomei a liberdade de utilizar `table-responsive` do Bootstrap 4 para ocultar algumas colunas na exibição mobile e deixar a tela de certa forma mais organizada, evitando conteúdo verboso.
-- Para tornar a aplicação mais interativa e demonstrar suas funcionalidades aproveitei também para exibir um `alert` questionando se o usuário deseja alguns dados fictícios para começar a trabalhar. Neste caso o `LocalStorage` será populado.
+- Para tornar a aplicação mais interativa e demonstrar suas funcionalidades aproveitei também para exibir um `alert` questionando se o usuário deseja alguns dados fictícios inicialmente, caso a listagem esteja vazia.
 - Não ficou claro se o campo `quantidade` estava relacionado diretamente a `unidadeMedida`, neste caso deduzi que ao informar a unidade de medida (quilograma, litros, unidade) o input quantidade receberia o valor correspondente.
 - Para a máscara do input preço foi utilizado o repositório de um colega: https://github.com/nbfontana/ngx-currency
 - Para a máscara dos campos com limite de casas decimais, utilizei o repositório TextMask: https://github.com/text-mask/text-mask
 - Não havia obrigatoriedade de o campo `quantidade` ser modelado como do tipo number, neste caso optei por string, acompanhado já da unidade de medida escolhida.
-- 
+  
 
 ### Estrutura de rotas
 - / - `ListagemComponent`

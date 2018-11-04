@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 import { Item } from './item/item.model';
 import { ItemService } from './item/item.service';
-import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-listagem',
@@ -12,14 +13,18 @@ import { Observable } from 'rxjs';
 })
 export class ListagemComponent implements OnInit {
 
-  dados: Item[];
+  dados: Item[] = [];
 
   constructor(private itemService: ItemService) { }
 
   ngOnInit() {
-
-
+    this.itemService.listar().subscribe(resp => {
+      this.dados = resp;
+      console.log(resp);
+      
+    });
   }
+
 
   // fictícios para localStorage
   cargaDados() {

@@ -15,6 +15,7 @@ import { PersonalizacaoComponent } from './personalizacao/personalizacao.compone
 import { ItemComponent } from './listagem/item/item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ItemService } from './listagem/item/item.service';
+import { HttpClientModule } from '@angular/common/http';
 
 export const customCurrencyMaskConfig = {
   align: 'left',
@@ -43,6 +44,7 @@ export const customCurrencyMaskConfig = {
     BrowserModule,
     RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules }),
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     TextMaskModule,
     NgxCurrencyModule.forRoot(customCurrencyMaskConfig)

@@ -13,7 +13,7 @@
 
 <h1>Listagem</h1>
 <div class="table-responsive">
-  <table class="table table-hover table-striped">
+  <table class="table table-hover table-striped" *ngIf="dados.length > 0">
     <thead>
       <th scope="col" style="min-width: 150px;">Item</th>
       <th scope="col" class="d-none d-sm-block d-md-block d-lg-block">Qtde</th>
