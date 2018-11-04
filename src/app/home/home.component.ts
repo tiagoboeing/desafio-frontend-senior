@@ -9,9 +9,10 @@ export class HomeComponent implements OnInit {
 
   corBarraSuperior = 'navbar-color';
 
-  constructor() { }
-
+  // recebe pedido para abrir/fechar menu
   @Output() toggle = new EventEmitter();
+
+  constructor() { }
 
   ngOnInit() {
     if (localStorage.getItem('cores')) {

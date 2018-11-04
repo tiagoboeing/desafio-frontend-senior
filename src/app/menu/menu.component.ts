@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { HomeComponent } from '../home/home.component';
 import { Router, NavigationEnd } from '@angular/router';
@@ -10,22 +10,27 @@ import { Router, NavigationEnd } from '@angular/router';
   animations: [
     trigger('toggleMenu', [
       state('hidden', style({
-        opacity: 0,
-        left: '-400px',
+        opacity: 1,
+        left: '-250px',
         'display': 'none'
       })),
       state('visible', style({
         opacity: 1,
         'display': 'inherit'
       })),
-      transition('* => *', animate('250ms 0s ease-in-out'))
+      transition('* => *', animate('200ms 0s ease-in-out'))
     ])
   ]
 })
 
 export class MenuComponent implements OnInit {
 
+  // estado inicial da animação
   toggleMenuState = 'hidden';
+
+  // cores do menu
+  corMenu = 'bg-dark';
+  corTextoMenu = 'text-white';
 
   constructor(private home: HomeComponent,
               private router: Router) { }
