@@ -18,19 +18,20 @@ export class ListagemComponent implements OnInit {
   constructor(private itemService: ItemService) { }
 
   ngOnInit() {
+    // GET
     this.itemService.listar().subscribe(resp => {
       this.dados = resp;
-      console.log(resp);
-      
     });
+
+    // monitora event e atualiza lista quando disparado
+    this.itemService.event.subscribe(() => this.ngOnInit());
   }
 
 
-  // fictícios para localStorage
+  // dados fictícios
   cargaDados() {
     this.itemService.cargaDados();
   }
-
 
 
 }

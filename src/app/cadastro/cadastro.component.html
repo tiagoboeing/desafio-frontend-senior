@@ -8,7 +8,7 @@
 </nav>
 <!-- /breadcrumb -->
 
-<h1>Cadastrar item</h1>
+<h1>{{editar ? 'Editar ' : 'Cadastrar '}} item <span *ngIf="id">#{{id}}</span></h1>
 <form class="form-group needs-validation" [formGroup]="itemForm" novalidate>
 
   <!-- nome -->
@@ -97,10 +97,11 @@
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="fas fa-calendar text-success"></i></span>
         </div>
-        <input type="date" id="fabricacao" name="fabricacao" formControlName="fabricacao" 
+        <input type="text" id="dataFabricacao" name="dataFabricacao" 
+          formControlName="dataFabricacao" [textMask]="{mask: dateMask}" placeholder="__/__/____"
           class="form-control form-control-lg"
-          [class.is-valid]="(!input.fabricacao.errors && input.fabricacao.valid) && (input.fabricacao.dirty || input.fabricacao.touched)"
-          [class.is-invalid]="(input.fabricacao.errors && !input.fabricacao.valid) && (input.fabricacao.dirty || input.fabricacao.touched)">
+          [class.is-valid]="(!input.dataFabricacao.errors && input.dataFabricacao.valid) && (input.dataFabricacao.dirty || input.dataFabricacao.touched)"
+          [class.is-invalid]="(input.dataFabricacao.errors && !input.dataFabricacao.valid) && (input.dataFabricacao.dirty || input.dataFabricacao.touched)">
 
           <div class="valid-feedback text-right"><i class="fas fa-check"></i> Ok!</div>
           <div class="invalid-feedback text-right"><i class="fas fa-times"></i> Campo obrigatório!</div>
@@ -110,19 +111,20 @@
     
     <!-- validade -->
     <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-      <label for="validade">Data de validade <span class="text-danger">*</span></label>
+      <label for="validade">Data de validade <span class="text-danger" *ngIf="perecivel">*</span></label>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="fas fa-calendar-alt text-danger"></i></span>
         </div>
-        <input type="date" id="validade" name="validade" formControlName="validade" 
+        <input type="text" id="dataValidade" name="dataValidade" 
+          formControlName="dataValidade" [textMask]="{mask: dateMask}" placeholder="__/__/____"
           class="form-control form-control-lg" [required]="checaPerecivel()"
-          [class.is-valid]="(!input.validade.errors && input.validade.valid) && (input.validade.dirty || input.validade.touched)"
-          [class.is-invalid]="(input.validade.errors && !input.validade.valid) && (input.validade.dirty || input.validade.touched)">
+          [class.is-valid]="(!input.dataValidade.errors && input.dataValidade.valid) && (input.dataValidade.dirty || input.dataValidade.touched)"
+          [class.is-invalid]="(input.dataValidade.errors && !input.dataValidade.valid) && (input.dataValidade.dirty || input.dataValidade.touched)">
 
           <div class="valid-feedback text-right"><i class="fas fa-check"></i> Ok!</div>
-          <div class="invalid-feedback text-right" *ngIf="input.validade.dirty && input.validade.errors.required"><i class="fas fa-times"></i> Campo obrigatório!</div>
-          <div class="invalid-feedback text-right" *ngIf="input.validade.dirty && input.validade.errors && input.validade.errors.validade"><i class="fas fa-times"></i> Item vencido!</div>
+          <div class="invalid-feedback text-right" *ngIf="input.dataValidade.errors"><i class="fas fa-times"></i> Campo obrigatório!</div>
+          <div class="invalid-feedback text-right" *ngIf="input.dataValidade.dirty && input.dataValidade.errors && input.dataValidade.errors.validade"><i class="fas fa-times"></i> Item vencido!</div>
       </div>
     </div>
     <!-- /validade -->

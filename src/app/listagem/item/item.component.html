@@ -15,12 +15,12 @@
 
 <!-- fabricação e validade (se informada) -->
 <td class="d-none d-sm-block d-md-block d-lg-block">
-    <span alt="Fabricado em" class="text-muted"><i class="fa fa-calendar text-success"></i> {{item.dataFabricacao | date: 'dd/MM/yyyy'}}</span><br>
-    <span class="text-muted" *ngIf="item.dataValidade"><i class="fa fa-calendar-alt text-danger"></i> {{item.dataValidade | date: 'dd/MM/yyyy'}}</span>
+    <span alt="Fabricado em" class="text-muted"><i class="fa fa-calendar text-success"></i> {{item.dataFabricacao | date:'dd/MM/yyyy'}}</span><br>
+    <span class="text-muted" *ngIf="item.dataValidade"><i class="fa fa-calendar-alt text-danger"></i> {{item.dataValidade | date:'dd/MM/yyyy'}}</span>
 </td>
 
 <!-- ações (editar/excluir) -->
 <td>
-    <button class="btn btn-primary rounded mr-2">Editar</button>
-    <button class="btn btn-danger rounded"><i class="fa fa-trash text-white"></i></button>
+    <button class="btn btn-primary rounded mr-2" [routerLink]="['/editar', item.id]">Editar</button>
+    <button class="btn btn-danger rounded" (click)="excluir(item)"><i class="fa fa-trash text-white"></i></button>
 </td>

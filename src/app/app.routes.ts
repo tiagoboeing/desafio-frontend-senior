@@ -12,6 +12,8 @@ export const ROUTES: Routes = [
             { path: '', component: ListagemComponent },
             { path: 'listagem', component: ListagemComponent },
             { path: 'cadastro', component: CadastroComponent },
+            { path: 'editar/:id', component: CadastroComponent },
+
             { path: 'personalizacao', component: PersonalizacaoComponent }
         ]
     },

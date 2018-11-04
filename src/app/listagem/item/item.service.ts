@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Item } from './item.model';
@@ -8,6 +8,9 @@ import { API } from 'src/app/app.api';
 @Injectable()
 export class ItemService {
 
+  // evento de atualização de tela
+  @Output() event = new EventEmitter();
+
   constructor(private http: HttpClient) { }
 
   // POST
@@ -15,64 +18,88 @@ export class ItemService {
     return this.http.post<Item>(`${API}/itens`, item);
   }
 
+  // GET
   listar(): Observable<Item[]> {
     return this.http.get<Item[]>(`${API}/itens`);
   }
 
+  // GET by ID
+  itemByID(id: number): Observable<Item> {
+    return this.http.get<Item>(`${API}/itens/` + id);
+  }
+
+  // PUT
+  atualizar(item: Item): Observable<Item> {
+    return this.http.put<Item>(`${API}/itens/` + item.id, item);
+  }
+
+  // DELETE
+  excluir(item: Item): Observable<Item> {
+    return this.http.delete<Item>(`${API}/itens/` + item.id);
+  }
 
 
-
-
-  // carrega dados fictícios para localStorage
+  // dados fictícios
   cargaDados() {
     let item: Item = {
-      id: 1541223639453,
-      nome: 'Soja 20kg',
+      nome: 'Você não vai conseguir colocar números aqui ao editar - 20kg',
       preco: 2.8,
       perecivel: true,
-      dataValidade: new Date(),
-      dataFabricacao: new Date(),
+      dataValidade: new Date('03/27/2018'),
+      dataFabricacao: new Date('01/27/2017'),
       unidadeMedida: 'Quilograma',
       quantidade: '20 un'
     };
-    this.cadastra(item);
+    this.cadastra(item).subscribe(console.log);
 
     item = {
-      id: 1541223690478,
-      nome: 'Coca-Cola 2,5 lt',
+      nome: 'Produto somente letras',
+      preco: 118.3,
+      perecivel: false,
+      dataValidade: null,
+      dataFabricacao: new Date('09/28/2018'),
+      unidadeMedida: 'Quilograma',
+      quantidade: '53 kg'
+    };
+    this.cadastra(item).subscribe(console.log);
+
+    item = {
+      nome: 'Coca-Cola dois litros e meio',
       preco: 5.47,
       perecivel: true,
-      dataValidade: new Date('2018-06-21'),
-      dataFabricacao: new Date('2018-11-10'),
+      dataValidade: new Date('12/25/2018'),
+      dataFabricacao: new Date('11/10/2018'),
       unidadeMedida: 'Litro',
       quantidade: '2.5 lt'
     };
-    this.cadastra(item);
+    this.cadastra(item).subscribe(console.log);
 
     item = {
-      id: 1541223702636,
-      nome: 'Produto nunca vence',
+      nome: 'Sem criatividade para nome',
       preco: 87.3,
       perecivel: false,
       dataValidade: null,
-      dataFabricacao: new Date('2017-12-10'),
+      dataFabricacao: new Date('12/10/2010'),
       unidadeMedida: 'Unidade',
       quantidade: '53 un'
     };
-    this.cadastra(item);
+    this.cadastra(item).subscribe(console.log);
 
     item = {
-      id: 1541223719061,
-      nome: 'Produto 3 casas decimais',
+      nome: 'Qualquer item',
       preco: 1.99,
       perecivel: false,
       dataValidade: null,
-      dataFabricacao: new Date('2018-08-01'),
+      dataFabricacao: new Date('11/10/2008'),
       unidadeMedida: 'Quilograma',
       quantidade: '1.998 kg'
     };
-    this.cadastra(item);
+    this.cadastra(item).subscribe((resp) => {
+      console.log(resp);
 
+      // emite evento para atualizar listagem
+      this.event.emit();
+    });
   }
 
 

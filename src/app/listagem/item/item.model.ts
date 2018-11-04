@@ -1,7 +1,7 @@
 export interface Item {
 
     // apenas para ref ao index do array (facilita busca/comparação)
-    id: number;
+    id?: number;
 
     nome: string;
     preco: number;
