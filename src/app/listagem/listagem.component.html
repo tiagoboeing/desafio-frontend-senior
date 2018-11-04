@@ -13,7 +13,7 @@
 
 <h1>Listagem</h1>
 <div class="table-responsive">
-  <table class="table table-hover table-striped" *ngIf="statusLocalStorage">
+  <table class="table table-hover table-striped">
     <thead>
       <th scope="col" style="min-width: 150px;">Item</th>
       <th scope="col" class="d-none d-sm-block d-md-block d-lg-block">Qtde</th>
@@ -31,9 +31,8 @@
 </div>
 
 <!-- apenas para ficar mais interativo -->
-<div class="alert alert-danger mt-3 text-center" role="alert" *ngIf="!statusLocalStorage">
+<div class="alert alert-danger mt-3 text-center" role="alert">
   <strong>Não há dados em seu LocalStorage. Vamos realizar a primeira carga de dados?</strong>
   <button class="btn btn-lg btn-dark w-100 mt-4" (click)="cargaDados()"><i class="fa fa-upload"></i> CARREGAR DADOS</button>
 </div>
 
-<button (click)="test()">carga constructor</button>
