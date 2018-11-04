@@ -121,8 +121,8 @@
           [class.is-invalid]="(input.validade.errors && !input.validade.valid) && (input.validade.dirty || input.validade.touched)">
 
           <div class="valid-feedback text-right"><i class="fas fa-check"></i> Ok!</div>
-          <div class="invalid-feedback text-right" *ngIf="itemForm.get('validade').dirty && itemForm.validade.errors.required"><i class="fas fa-times"></i> Campo obrigatório!</div>
-          <div class="invalid-feedback text-right" *ngIf="itemForm.get('validade').dirty && itemForm.get('validade').errors && itemForm.get('validade').errors.validade"><i class="fas fa-times"></i> Item vencido!</div>
+          <div class="invalid-feedback text-right" *ngIf="input.validade.dirty && input.validade.errors.required"><i class="fas fa-times"></i> Campo obrigatório!</div>
+          <div class="invalid-feedback text-right" *ngIf="input.validade.dirty && input.validade.errors && input.validade.errors.validade"><i class="fas fa-times"></i> Item vencido!</div>
       </div>
     </div>
     <!-- /validade -->

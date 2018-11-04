@@ -7,20 +7,6 @@ export class ItemService {
   // apenas para manipulação no serviço
   dados: Item[];
 
-  cache: any;
-
-  // emissão de eventos
-  @Output() eventos = new EventEmitter<Item[]>();
-
-  // lista observável
-  // listagem: Observable<any[]> = new Observable((observer => {
-  //   observer.next(JSON.parse(localStorage.getItem('itens')));
-  // }));
-
-  getStorage() {
-      this.cache = JSON.parse(localStorage.getItem('itens'));
-  }
-
   // carrega dados fictícios para localStorage
   cargaDados() {
     this.dados = [];
@@ -65,11 +51,6 @@ export class ItemService {
       quantidade: '1.998 kg'
     });
 
-    // guardamos os novos dados no localStorage
-    localStorage.setItem('itens', JSON.stringify(this.dados));
-
-    // emitimos evento informando que houve alteração na lista
-    this.eventos.emit(this.dados);
   }
 
 
