@@ -1,46 +1,25 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Item } from './item.model';
-import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class ItemService {
 
-  // emite eventos de alterações na lista
-  @Output() listarItens = new EventEmitter<Item[]>();
-
-
-  // public itens: BehaviorSubject<any> = JSON.parse(localStorage.getItem('itens'));
-
   // apenas para manipulação no serviço
   dados: Item[];
 
-  // primeiro carregamento
-  preencheDados() {
-    this.listarItens.emit(JSON.parse(localStorage.getItem('itens')));
+  cache: any;
+
+  // emissão de eventos
+  @Output() eventos = new EventEmitter<Item[]>();
+
+  // lista observável
+  // listagem: Observable<any[]> = new Observable((observer => {
+  //   observer.next(JSON.parse(localStorage.getItem('itens')));
+  // }));
+
+  getStorage() {
+      this.cache = JSON.parse(localStorage.getItem('itens'));
   }
-
-
-  // listar() {
-  //   this.dados = JSON.parse(localStorage.getItem('itens'));
-
-  //   // emitimos evento informando que houve alteração na lista
-  //   this.listarItens.emit(this.dados);
-  // }
-
-
-  // listaItens(): Observable<any> {
-  //   return this.lista.asObservable();
-  // }
-
-  // // recebemos um array qualquer e guardamos no localStorage
-  // guardaArray(itens: any[]) {
-  //   if (itens.length === 0) {
-  //     localStorage.removeItem('itens');
-  //   } else {
-  //     localStorage.removeItem('itens');
-  //     localStorage.setItem('itens', JSON.stringify(itens));
-  //   }
-  // }
 
   // carrega dados fictícios para localStorage
   cargaDados() {
@@ -90,7 +69,7 @@ export class ItemService {
     localStorage.setItem('itens', JSON.stringify(this.dados));
 
     // emitimos evento informando que houve alteração na lista
-    this.listarItens.emit(JSON.parse(localStorage.getItem('itens')));
+    this.eventos.emit(this.dados);
   }
 
 

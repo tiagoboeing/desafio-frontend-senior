@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { map, tap } from 'rxjs/operators';
 
 import { Item } from './item/item.model';
 import { ItemService } from './item/item.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-listagem',
@@ -10,7 +12,8 @@ import { ItemService } from './item/item.service';
 })
 export class ListagemComponent implements OnInit {
 
-  dados: Item[];
+  dados: Observable<any> = new Observable();
+
   item: Item;
 
   statusLocalStorage: boolean;
@@ -18,17 +21,26 @@ export class ListagemComponent implements OnInit {
   constructor(private itemService: ItemService) { }
 
   ngOnInit() {
+
+    this.dados = new Observable((observer) => {
+      observer.next(this.itemService.getStorage());
+      observer.complete();
+    });
+
+
+
     // DADOS FICTÍCIOS PELA PRIMEIRA VEZ, caso vazio
     if ('itens' in localStorage) {
       this.statusLocalStorage = true;
 
-      // nos inscrevemos na lista de itens
-      this.itemService.listarItens.subscribe(resp => {
-        this.dados = resp;
-      });
+      // this.dados = JSON.parse(localStorage.getItem('itens'));
 
-      // emitimos um primeiro evento de forma assíncrona
-      this.itemService.preencheDados();
+      // assistimos os eventos
+      // this.itemService.eventos
+      //   .pipe(
+      //     tap(resp => {
+      //       this.dados = resp;
+      //     })).subscribe();
 
     } else {
       this.statusLocalStorage = false;
@@ -38,13 +50,13 @@ export class ListagemComponent implements OnInit {
     }
   }
 
-  carga() {
-    this.itemService.preencheDados();
-  }
-
   // fictícios para localStorage
   cargaDados() {
     this.itemService.cargaDados();
+  }
+
+  test() {
+    this.dados.subscribe(resp => { console.log(resp); });
   }
 
 }
