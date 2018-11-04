@@ -5,15 +5,22 @@
     <nav class="navbar navbar-expand-lg navbar-dark" [class]="corBarraSuperior">
       <div class="container">
         <a class="navbar-brand" [routerLink]="['/']">
-          <img src="/assets/img/senior.svg" alt="Senior" height="50" class="hidden-xs hidden-sm hidden-md">
+          <img src="/assets/img/senior.svg" alt="Senior" height="50">
 
           <!-- NOME TEXTUAL? Descomentar linha abaixo e comentar acima -->
           <!-- <h1>DESAFIO <br> <span class="destaque-logo">FRONTEND</span></h1> -->
         </a>
+
+        <!-- mostrar menu -->
+        <i class="fa fa-bars fa-pull-right" style="font-size: 2.2rem; padding-top: 20px; cursor: pointer;" (click)="toggleMenu()"></i>
       </div>
     </nav>
   </header>
   <!-- /Barra superior -->
+
+  <!-- MENU LATERAL -->
+  <app-menu></app-menu>
+  <!-- /MENU LATERAL -->
 
   <!-- CONTEUDO -->
   <div class="content-wrapper">

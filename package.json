@@ -14,7 +14,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^6.1.0",
+    "@angular/animations": "^6.1.10",
     "@angular/common": "^6.1.0",
     "@angular/compiler": "^6.1.0",
     "@angular/core": "^6.1.0",
@@ -25,11 +25,11 @@
     "@angular/router": "^6.1.0",
     "angular2-text-mask": "^9.0.0",
     "core-js": "^2.5.4",
+    "json-server": "^0.14.0",
     "ngx-currency": "^1.5.0",
     "rxjs": "^6.2.2",
     "text-mask-addons": "^3.8.0",
-    "zone.js": "~0.8.26",
-    "json-server": "^0.14.0"
+    "zone.js": "~0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.8.0",

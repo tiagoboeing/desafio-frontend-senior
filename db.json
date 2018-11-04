@@ -4,8 +4,8 @@
       "nome": "Você não vai conseguir colocar números aqui ao editar - 20kg",
       "preco": 2.8,
       "perecivel": true,
-      "dataValidade": "2018-03-27T03:00:00.000Z",
-      "dataFabricacao": "2017-01-27T02:00:00.000Z",
+      "dataValidade": "2018-03-27",
+      "dataFabricacao": "2017-01-27",
       "unidadeMedida": "Quilograma",
       "quantidade": "20 un",
       "id": 1
@@ -15,7 +15,7 @@
       "preco": 118.3,
       "perecivel": false,
       "dataValidade": null,
-      "dataFabricacao": "2018-09-28T03:00:00.000Z",
+      "dataFabricacao": "2018-09-28",
       "unidadeMedida": "Quilograma",
       "quantidade": "53 kg",
       "id": 2
@@ -25,7 +25,7 @@
       "preco": 87.3,
       "perecivel": false,
       "dataValidade": null,
-      "dataFabricacao": "2010-12-10T02:00:00.000Z",
+      "dataFabricacao": "2010-10-12",
       "unidadeMedida": "Unidade",
       "quantidade": "53 un",
       "id": 3
@@ -35,20 +35,40 @@
       "preco": 1.99,
       "perecivel": false,
       "dataValidade": null,
-      "dataFabricacao": "2008-11-10T02:00:00.000Z",
+      "dataFabricacao": "2008-10-11",
       "unidadeMedida": "Quilograma",
       "quantidade": "1.998 kg",
-      "id": 4
+      "id": 5
     },
     {
-      "nome": "Coca-Cola dois litros e meio",
-      "preco": 5.47,
+      "id": 6,
+      "nome": "safasfasf",
+      "unidadeMedida": "Unidade",
+      "quantidade": "12 un",
+      "preco": 21431.24,
+      "perecivel": false,
+      "dataValidade": "",
+      "dataFabricacao": "2018-11-04"
+    },
+    {
+      "id": 7,
+      "nome": "asfasfasf",
+      "unidadeMedida": "Unidade",
+      "quantidade": "2 un",
+      "preco": 214.12,
       "perecivel": true,
-      "dataValidade": "2018-12-25T02:00:00.000Z",
-      "dataFabricacao": "2018-11-10T02:00:00.000Z",
-      "unidadeMedida": "Litro",
-      "quantidade": "2.5 lt",
-      "id": 5
+      "dataValidade": "2018-11-04",
+      "dataFabricacao": "2018-11-04"
+    },
+    {
+      "id": 8,
+      "nome": "asfasfasf",
+      "unidadeMedida": "Unidade",
+      "quantidade": "122 un",
+      "preco": 12.41,
+      "perecivel": false,
+      "dataValidade": "",
+      "dataFabricacao": "2018-11-04"
     }
   ]
 }

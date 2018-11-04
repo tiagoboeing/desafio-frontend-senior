@@ -5,7 +5,7 @@ export interface Item {
 
     nome: string;
     preco: number;
-    dataFabricacao: Date;
+    dataFabricacao: Date | string;
 
     // quantidade representa (estoque, litros ou quilos)
     // varia de acordo com unidade de medida informada
@@ -14,5 +14,7 @@ export interface Item {
 
     // se perecível validade deve ser informada
     perecivel: boolean;
-    dataValidade?: Date;
+    dataValidade?: Date | string;
+
+    // datas foram tipadas para receber string no caso da carga inicial de dados
 }

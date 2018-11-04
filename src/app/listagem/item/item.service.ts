@@ -45,8 +45,8 @@ export class ItemService {
       nome: 'Você não vai conseguir colocar números aqui ao editar - 20kg',
       preco: 2.8,
       perecivel: true,
-      dataValidade: new Date('03/27/2018'),
-      dataFabricacao: new Date('01/27/2017'),
+      dataValidade: '2018-03-27',
+      dataFabricacao: '2017-01-27',
       unidadeMedida: 'Quilograma',
       quantidade: '20 un'
     };
@@ -57,7 +57,7 @@ export class ItemService {
       preco: 118.3,
       perecivel: false,
       dataValidade: null,
-      dataFabricacao: new Date('09/28/2018'),
+      dataFabricacao: '2018-09-28',
       unidadeMedida: 'Quilograma',
       quantidade: '53 kg'
     };
@@ -67,8 +67,8 @@ export class ItemService {
       nome: 'Coca-Cola dois litros e meio',
       preco: 5.47,
       perecivel: true,
-      dataValidade: new Date('12/25/2018'),
-      dataFabricacao: new Date('11/10/2018'),
+      dataValidade: '2018-12-25',
+      dataFabricacao: '2018-10-11',
       unidadeMedida: 'Litro',
       quantidade: '2.5 lt'
     };
@@ -79,7 +79,7 @@ export class ItemService {
       preco: 87.3,
       perecivel: false,
       dataValidade: null,
-      dataFabricacao: new Date('12/10/2010'),
+      dataFabricacao: '2010-10-12',
       unidadeMedida: 'Unidade',
       quantidade: '53 un'
     };
@@ -90,7 +90,7 @@ export class ItemService {
       preco: 1.99,
       perecivel: false,
       dataValidade: null,
-      dataFabricacao: new Date('11/10/2008'),
+      dataFabricacao: '2008-10-11',
       unidadeMedida: 'Quilograma',
       quantidade: '1.998 kg'
     };

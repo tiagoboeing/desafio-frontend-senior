@@ -97,8 +97,8 @@
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="fas fa-calendar text-success"></i></span>
         </div>
-        <input type="text" id="dataFabricacao" name="dataFabricacao" 
-          formControlName="dataFabricacao" [textMask]="{mask: dateMask}" placeholder="__/__/____"
+        <input type="date" id="dataFabricacao" name="dataFabricacao" 
+          formControlName="dataFabricacao"
           class="form-control form-control-lg"
           [class.is-valid]="(!input.dataFabricacao.errors && input.dataFabricacao.valid) && (input.dataFabricacao.dirty || input.dataFabricacao.touched)"
           [class.is-invalid]="(input.dataFabricacao.errors && !input.dataFabricacao.valid) && (input.dataFabricacao.dirty || input.dataFabricacao.touched)">
@@ -116,8 +116,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="fas fa-calendar-alt text-danger"></i></span>
         </div>
-        <input type="text" id="dataValidade" name="dataValidade" 
-          formControlName="dataValidade" [textMask]="{mask: dateMask}" placeholder="__/__/____"
+        <input type="date" id="dataValidade" name="dataValidade" formControlName="dataValidade"
           class="form-control form-control-lg" [required]="checaPerecivel()"
           [class.is-valid]="(!input.dataValidade.errors && input.dataValidade.valid) && (input.dataValidade.dirty || input.dataValidade.touched)"
           [class.is-invalid]="(input.dataValidade.errors && !input.dataValidade.valid) && (input.dataValidade.dirty || input.dataValidade.touched)">

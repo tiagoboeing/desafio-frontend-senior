@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgxCurrencyModule } from 'ngx-currency';
 import { TextMaskModule } from 'angular2-text-mask';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { ListagemComponent } from './listagem/listagem.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
@@ -16,6 +16,7 @@ import { ItemComponent } from './listagem/item/item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ItemService } from './listagem/item/item.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MenuComponent } from './menu/menu.component';
 
 export const customCurrencyMaskConfig = {
   align: 'left',
@@ -38,10 +39,12 @@ export const customCurrencyMaskConfig = {
     NotFoundComponent,
     FooterComponent,
     PersonalizacaoComponent,
-    ItemComponent
+    ItemComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules }),
     FormsModule,
     HttpClientModule,

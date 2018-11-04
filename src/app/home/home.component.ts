@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -11,28 +11,43 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
 
+  @Output() toggle = new EventEmitter();
+
   ngOnInit() {
+    this.corBarraSuperior = localStorage.getItem('cores');
   }
 
+  toggleMenu() {
+    this.toggle.emit();
+  }
 
   personalizaBarraSuperior(cor: string) {
+
+    let corSelecionada = 'navbar-color';
+
     switch (cor) {
       case 'azul':
-        this.corBarraSuperior = 'bg-primary';
+        corSelecionada = 'bg-primary';
         break;
 
       case 'vermelho':
-        this.corBarraSuperior = 'bg-danger';
+        corSelecionada = 'bg-danger';
         break;
 
       case 'amarelo':
-        this.corBarraSuperior = 'bg-warning';
+        corSelecionada = 'bg-warning';
         break;
 
       default:
-        this.corBarraSuperior = 'navbar-color';
+        corSelecionada = 'navbar-color';
         break;
     }
+
+    // guardamos no localStorage
+    localStorage.setItem('cores', corSelecionada);
+
+    this.ngOnInit();
   }
+
 
 }

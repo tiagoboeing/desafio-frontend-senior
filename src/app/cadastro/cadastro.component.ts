@@ -24,7 +24,7 @@ export class CadastroComponent implements OnInit {
   editar = false;
   id: number = null;
 
-  nomePattern = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
+  nomePattern = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ -]+$/;
 
   dateMask = [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/];
   datePattern = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
@@ -77,6 +77,7 @@ export class CadastroComponent implements OnInit {
 
 
   ngOnInit() {
+
     this.itemForm = new FormGroup({
       id: new FormControl(''),
       nome: new FormControl('', [Validators.required, Validators.maxLength(50), Validators.pattern(this.nomePattern)]),
@@ -84,8 +85,8 @@ export class CadastroComponent implements OnInit {
       quantidade: new FormControl(''),
       preco: new FormControl('', [Validators.required, Validators.min(0.01)]),
       perecivel: new FormControl(this.perecivel, [Validators.required]),
-      dataValidade: new FormControl('', [Validators.pattern(this.datePattern)]),
-      dataFabricacao: new FormControl('', [Validators.required, Validators.pattern(this.datePattern)])
+      dataValidade: new FormControl('', [this.checaValidade]),
+      dataFabricacao: new FormControl('', [Validators.required])
     });
 
     // subscribe no checkbox perecivel
@@ -93,8 +94,7 @@ export class CadastroComponent implements OnInit {
       this.perecivel = res;
     });
 
-    // checamos por id do registro na URL
-    // obtemos o que será editado
+    // obtemos o item a ser editado
     this.activatedRoute.params.subscribe(params => {
       if (params.id) {
         this.editar = true;
@@ -124,16 +124,37 @@ export class CadastroComponent implements OnInit {
 
   // se data validade informada < dataHoje = produto vencido
   checaValidade(control: AbstractControl): { [key: string]: boolean } | null {
+
+    let valido = true;
+    let perecivel = true;
+
     const today = new Date();
     const dd = ('0' + today.getDate()).slice(-2);
     const mm = today.getMonth() + 1;
     const yyyy = today.getFullYear();
     const dataHoje = yyyy + '-' + mm + '-' + dd;
 
-    if (control.value !== undefined && control.value < dataHoje) {
+    // analisamos o campo perecivel
+    const group = control.parent;
+    if (group && group.controls['perecivel'].value) { perecivel = true; } else { perecivel = false; }
+
+    // verificamos se é válido
+    if (control.value !== undefined && control.value < dataHoje) { valido = false; } else { valido = true; }
+
+    // personalizamos erros
+    if (perecivel && valido) {
+      return null;
+    } else if (valido && !perecivel) {
+      return null;
+    } else if (!valido && perecivel) {
       return { 'validade': true };
+    } else if (!valido && !perecivel) {
+      if (control.value === '') { return null; } else { return { 'validade': true }; }
     }
-    return null;
+
+
+    // return { 'perecivel': true };
+
   }
 
   // condição de obrigatoriedade
@@ -168,5 +189,6 @@ export class CadastroComponent implements OnInit {
       this.router.navigate(['/listagem']);
     }
   }
+
 
 }
