@@ -1,4 +1,6 @@
 # Desafio Front-end
+### Vai rodar localmente? Use `npm start` ou `npm run start:proxy:api`
+<hr>
 
 ## Considerações do autor
 
