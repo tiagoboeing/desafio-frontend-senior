@@ -4,6 +4,13 @@ Partindo do princípio que você tem Node e Angular instalados...
 - Rode `npm install` para baixar as dependências
 - Suba a aplicação com `npm start` ou `npm run start:proxy:api`
 
+<img src="https://res.cloudinary.com/practicaldev/image/fetch/s--7f5GjxUW--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://thepracticaldev.s3.amazonaws.com/i/c29t9uc8roz8g9rddbqs.png" width="200"/>
+<img src="https://0ebdc219a6018a0b4949-5cd5d2f3f64eaf0eb4e05aee819f5378.ssl.cf5.rackcdn.com/workflows/deploy-to-github-pages/cover-deploy-to-github-pages.png" width="180"/>
+
+A API encontra-se no Heroku em uma instância preemptiva, sendo assim pode ser necessário aguardar alguns minutos para que a mesma seja ativada. Caso não ocorra automaticamente, atualize a página.
+
+O frontend (Angular) encontra-se no GitHub Pages, sendo assim a ativação é instantânea.
+
 <hr>
 
 ## Considerações do autor
