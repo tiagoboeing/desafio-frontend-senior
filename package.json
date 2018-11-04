@@ -7,7 +7,10 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "api": "json-server --watch db.json",
+    "start:proxy": "ng serve --proxy-config proxy.conf.json",
+    "start:proxy:api": "concurrently \"npm run api\" \"npm run start:proxy\""
   },
   "private": true,
   "dependencies": {
@@ -25,7 +28,8 @@
     "ngx-currency": "^1.5.0",
     "rxjs": "^6.2.2",
     "text-mask-addons": "^3.8.0",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.8.26",
+    "json-server": "^0.14.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.8.0",
@@ -36,6 +40,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.3.0",
+    "concurrently": "^4.0.1",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~3.0.0",

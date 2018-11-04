@@ -1,0 +1,44 @@
+{
+    "itens": [
+        {
+            "id": 1541223639453,
+            "nome": "Soja 20kg",
+            "preco": 2.8,
+            "perecivel": true,
+            "dataValidade": null,
+            "dataFabricacao": null,
+            "unidadeMedida": "Quilograma",
+            "quantidade": "20 un"
+        },
+        {
+            "id": 1541223690478,
+            "nome": "Coca-Cola 2,5 lt",
+            "preco": 5.47,
+            "perecivel": true,
+            "dataValidade": "2018-06-21",
+            "dataFabricacao": "2018-11-10",
+            "unidadeMedida": "Litro",
+            "quantidade": "2.5 lt"
+          },
+          {
+            "id": 1541223702636,
+            "nome": "Produto nunca vence",
+            "preco": 87.3,
+            "perecivel": false,
+            "dataValidade": null,
+            "dataFabricacao": "2017-12-10",
+            "unidadeMedida": "Unidade",
+            "quantidade": "53 un"
+          },
+          {
+            "id": 1541223719061,
+            "nome": "Produto 3 casas decimais",
+            "preco": 1.99,
+            "perecivel": false,
+            "dataValidade": null,
+            "dataFabricacao": "2018-08-01",
+            "unidadeMedida": "Quilograma",
+            "quantidade": "1.998 kg"
+          }
+    ]
+}
