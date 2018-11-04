@@ -1,0 +1,29 @@
+/* >= 319px */
+@media only screen and (min-width: 319px) {
+    .snackbar{
+        opacity: 0;
+        min-width: 200px;
+        position: fixed;
+        z-index: 99;
+        right: 10%;
+        top: 40px;
+        transition: 0.2s ease-in-out;
+        padding: 15px 40px 15px 40px;
+    }
+}
+/* < 318px */
+@media only screen and (max-width: 350px) {
+    .snackbar{
+        opacity: 0;
+        width: 188px;
+        position: fixed;
+        z-index: 99;
+        right: 10%;
+        top: 40px;
+        transition: 0.2s ease-in-out;
+    }
+}
+
+.snackbar:hover{
+    box-shadow: 0 0 15px #464646;
+}

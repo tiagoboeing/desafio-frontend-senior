@@ -4,6 +4,7 @@ import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 import { Item } from '../listagem/item/item.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ItemService } from '../listagem/item/item.service';
+import { NotificationService } from '../shared/messages/notification.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -13,8 +14,9 @@ import { ItemService } from '../listagem/item/item.service';
 export class CadastroComponent implements OnInit {
 
   constructor(private itemService: ItemService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+              private notificationService: NotificationService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute) { }
 
   dados: Item[];
   itemForm: FormGroup;
@@ -115,10 +117,21 @@ export class CadastroComponent implements OnInit {
     // definimos o que requisitar: PUT ou POST
     if (this.editar) {
       return this.itemService.atualizar(item)
-        .subscribe(() => this.router.navigate(['/listagem']));
+        .subscribe(() => {
+          // emitimos uma mensagem para snackbar
+          this.notificationService.notify(`warning`, `O item com ID #${item.id} foi atualizado corretamente!`);
+
+          // encaminha para lista novamente
+          this.router.navigate(['/listagem']);
+        });
     } else {
       return this.itemService.cadastra(item)
-        .subscribe(() => this.router.navigate(['/listagem']));
+        .subscribe(() => {
+          // emitimos uma mensagem para snackbar
+          this.notificationService.notify(`success`, `Item cadastrado com sucesso!`);
+
+          this.router.navigate(['/listagem']);
+        });
     }
   }
 

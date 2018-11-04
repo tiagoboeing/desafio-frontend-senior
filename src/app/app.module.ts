@@ -17,6 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ItemService } from './listagem/item/item.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from './menu/menu.component';
+import { SnackbarComponent } from './shared/messages/snackbar/snackbar.component';
+import { NotificationService } from './shared/messages/notification.service';
 
 export const customCurrencyMaskConfig = {
   align: 'left',
@@ -40,7 +42,8 @@ export const customCurrencyMaskConfig = {
     FooterComponent,
     PersonalizacaoComponent,
     ItemComponent,
-    MenuComponent
+    MenuComponent,
+    SnackbarComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,7 @@ export const customCurrencyMaskConfig = {
     TextMaskModule,
     NgxCurrencyModule.forRoot(customCurrencyMaskConfig)
   ],
-  providers: [ItemService],
+  providers: [ItemService, NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
