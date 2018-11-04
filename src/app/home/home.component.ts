@@ -14,7 +14,12 @@ export class HomeComponent implements OnInit {
   @Output() toggle = new EventEmitter();
 
   ngOnInit() {
-    this.corBarraSuperior = localStorage.getItem('cores');
+    if (localStorage.getItem('cores')) {
+      this.corBarraSuperior = localStorage.getItem('cores');
+    } else {
+      this.corBarraSuperior = 'navbar-color';
+    }
+
   }
 
   toggleMenu() {

@@ -152,9 +152,6 @@ export class CadastroComponent implements OnInit {
       if (control.value === '') { return null; } else { return { 'validade': true }; }
     }
 
-
-    // return { 'perecivel': true };
-
   }
 
   // condição de obrigatoriedade

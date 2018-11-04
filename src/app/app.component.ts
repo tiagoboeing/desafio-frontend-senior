@@ -7,10 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  public cache: any;
-
-  public getStorage() {
-    this.cache = JSON.parse(localStorage.getItem('itens'));
-  }
-
 }

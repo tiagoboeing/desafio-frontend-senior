@@ -1,5 +1,9 @@
 # Desafio Front-end
-### Vai rodar localmente? Use `npm start` ou `npm run start:proxy:api`
+### Vai rodar localmente? 
+Partindo do princípio que você tem Node e Angular instalados...
+- Rode `npm install` para baixar as dependências
+- Suba a aplicação com `npm start` ou `npm run start:proxy:api`
+
 <hr>
 
 ## Considerações do autor
