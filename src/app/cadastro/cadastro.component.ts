@@ -130,6 +130,15 @@ export class CadastroComponent implements OnInit {
     const group = control.parent;
     if (group && group.controls['perecivel'].value) { perecivel = true; } else { perecivel = false; }
 
+    // caso atualize a validade, comparamos novamente: fabricacao > validade?
+    if (group && group.controls['dataFabricacao'].value) {
+      if (group.controls['dataFabricacao'].value < control.value) {
+        control.parent.controls['dataFabricacao'].setErrors(null);
+      } else {
+        console.log(control.parent.controls['dataFabricacao'].setErrors({ 'superior': true }));
+      }
+    }
+
     // verificamos se é válido
     if (control.value !== undefined && control.value < dataHoje) { valido = false; } else { valido = true; }
 
@@ -148,8 +157,9 @@ export class CadastroComponent implements OnInit {
   // se data de fabricação > validade = não permitido
   checaFabricacao(control: AbstractControl): { [key: string]: boolean } | null {
     const group = control.parent;
+
     if ((control.value !== undefined && control.value) > (group && group.controls['dataValidade'].value)) {
-      return { 'superior': true };
+      if (!group.controls['dataValidade'].value) { return null; } else { return { 'superior': true }; }
     } else {
       return null;
     }
