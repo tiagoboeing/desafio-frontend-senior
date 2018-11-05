@@ -6,7 +6,7 @@ Partindo do princípio que você tem Node e Angular instalados...
 
 <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--7f5GjxUW--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://thepracticaldev.s3.amazonaws.com/i/c29t9uc8roz8g9rddbqs.png" width="200"/>
 
-A API encontra-se no Heroku em uma instância preemptiva, sendo assim pode ser necessário aguardar alguns minutos para que a mesma seja ativada. Caso não ocorra automaticamente, atualize a página.
+A API encontra-se no Heroku em uma instância preemptiva, sendo assim pode ser necessário aguardar alguns minutos para que a mesma seja ativada. Caso não ocorra automaticamente, atualize a página. **Por ser uma instância preemptiva e gratuita, podem ocorrer falhas ou atrasos no processamento das requisições.**
 
 O frontend (Angular) encontra-se no GitHub Pages, sendo assim a ativação é instantânea.
 
