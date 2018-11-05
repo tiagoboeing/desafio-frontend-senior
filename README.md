@@ -25,9 +25,7 @@ O frontend (Angular) encontra-se no GitHub Pages, sendo assim a ativação é in
 - [Referencial técnico](https://github.com/tiagoboeing/desafio-frontend-senior/wiki/Referencial-t%C3%A9cnico)
   - [Estrutura de rotas](https://github.com/tiagoboeing/desafio-frontend-senior/wiki/Referencial-t%C3%A9cnico#estrutura-de-rotas)
   - [Dependências](https://github.com/tiagoboeing/desafio-frontend-senior/wiki/Referencial-t%C3%A9cnico#depend%C3%AAncias)
-
-
-
+  - [Concurrently](https://github.com/tiagoboeing/desafio-frontend-senior/wiki/Referencial-t%C3%A9cnico#concurrently)
 
 <hr>
 
