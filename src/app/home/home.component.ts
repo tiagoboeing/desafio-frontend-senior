@@ -55,5 +55,19 @@ export class HomeComponent implements OnInit {
     this.ngOnInit();
   }
 
+  // o alert já foi fechado antes?
+  statusAlert(): boolean {
+    if (localStorage.getItem('alert')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  fechaAlert() {
+    localStorage.setItem('alert', 'true');
+    this.ngOnInit();
+  }
+
 
 }

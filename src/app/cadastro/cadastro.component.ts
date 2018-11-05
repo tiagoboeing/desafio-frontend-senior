@@ -14,9 +14,9 @@ import { NotificationService } from '../shared/messages/notification.service';
 export class CadastroComponent implements OnInit {
 
   constructor(private itemService: ItemService,
-              private notificationService: NotificationService,
-              private router: Router,
-              private activatedRoute: ActivatedRoute) { }
+    private notificationService: NotificationService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute) { }
 
   dados: Item[];
   itemForm: FormGroup;
@@ -27,9 +27,6 @@ export class CadastroComponent implements OnInit {
   id: number = null;
 
   nomePattern = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ -]+$/;
-
-  dateMask = [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/];
-  datePattern = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
 
   unidadeMask = createNumberMask({
     prefix: '',
@@ -61,23 +58,6 @@ export class CadastroComponent implements OnInit {
   });
 
 
-  // verifica se fabricacao é inferior ao vencimento informado
-  // static checaFabricacao(group: AbstractControl): { [key: string]: boolean } {
-  //   const fabricacao = group.get('fabricacao').value;
-  //   const validade = group.get('validade').value;
-
-  //   console.log(group.get('perecivel').value);
-
-
-  //   if (fabricacao > validade) {
-  //     group.get('validade').setErrors({ fabricacaoInvalida: false });
-  //     // return { fabricacaoInvalida: true };
-  //   }
-
-  //   return undefined;
-  // }
-
-
   ngOnInit() {
 
     this.itemForm = new FormGroup({
@@ -88,7 +68,7 @@ export class CadastroComponent implements OnInit {
       preco: new FormControl('', [Validators.required, Validators.min(0.01)]),
       perecivel: new FormControl(this.perecivel, [Validators.required]),
       dataValidade: new FormControl('', [this.checaValidade]),
-      dataFabricacao: new FormControl('', [Validators.required])
+      dataFabricacao: new FormControl('', [Validators.required, this.checaFabricacao])
     });
 
     // subscribe no checkbox perecivel
@@ -137,7 +117,6 @@ export class CadastroComponent implements OnInit {
 
   // se data validade informada < dataHoje = produto vencido
   checaValidade(control: AbstractControl): { [key: string]: boolean } | null {
-
     let valido = true;
     let perecivel = true;
 
@@ -164,7 +143,16 @@ export class CadastroComponent implements OnInit {
     } else if (!valido && !perecivel) {
       if (control.value === '') { return null; } else { return { 'validade': true }; }
     }
+  }
 
+  // se data de fabricação > validade = não permitido
+  checaFabricacao(control: AbstractControl): { [key: string]: boolean } | null {
+    const group = control.parent;
+    if ((control.value !== undefined && control.value) > (group && group.controls['dataValidade'].value)) {
+      return { 'superior': true };
+    } else {
+      return null;
+    }
   }
 
   // condição de obrigatoriedade
@@ -199,6 +187,5 @@ export class CadastroComponent implements OnInit {
       this.router.navigate(['/listagem']);
     }
   }
-
 
 }

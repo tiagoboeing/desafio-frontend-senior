@@ -28,6 +28,8 @@
   <div class="content-wrapper">
     <div class="container mt-4">
 
+      <div class="alert alert-danger" [hidden]="statusAlert()"><i class="fa fa-cloud mr-2"></i> API está no Heroku e pode levar alguns minutos até que a instância seja ativada. Podem ocorrer erros e atrasos no processamento das requisições. <i class="fa fa-times fa-pull-right" (click)="fechaAlert()"></i></div>
+
       <!-- rotas do angular (app.routes.ts) -->
       <router-outlet></router-outlet>
       
