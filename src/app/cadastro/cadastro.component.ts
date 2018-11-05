@@ -134,6 +134,8 @@ export class CadastroComponent implements OnInit {
     if (group && group.controls['dataFabricacao'].value) {
       if (group.controls['dataFabricacao'].value < control.value) {
         control.parent.controls['dataFabricacao'].setErrors(null);
+      } else if (group.controls['dataFabricacao'].value === control.value) {
+        control.parent.controls['dataFabricacao'].setErrors(null);
       } else {
         console.log(control.parent.controls['dataFabricacao'].setErrors({ 'superior': true }));
       }
