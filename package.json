@@ -11,8 +11,7 @@
     "api": "json-server --watch db.json",
     "start:proxy": "ng serve --proxy-config proxy.conf.json",
     "start:proxy:api": "concurrently \"npm run api\" \"npm run start:proxy\"",
-    "pre-deploy": "ng build --prod --base-href 'https://tiagoboeing.github.io/desafio-frontend-senior/'",
-    "deploy": "npm run gh-pages",
+    "deploy": "concurrently \"ng build --prod\" \"npm run gh-pages\"",
     "gh-pages": "gh-pages -d dist -b gh-pages"
   },
   "private": true,

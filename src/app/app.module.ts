@@ -19,7 +19,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from './menu/menu.component';
 import { SnackbarComponent } from './shared/messages/snackbar/snackbar.component';
 import { NotificationService } from './shared/messages/notification.service';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 export const customCurrencyMaskConfig = {
   align: 'left',
@@ -56,11 +55,8 @@ export const customCurrencyMaskConfig = {
     TextMaskModule,
     NgxCurrencyModule.forRoot(customCurrencyMaskConfig)
   ],
-  providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
-    ItemService,
-    NotificationService
-  ],
+  providers: [ItemService, NotificationService],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
+
