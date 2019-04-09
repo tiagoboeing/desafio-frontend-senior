@@ -1,6 +1,6 @@
 {
     "itens": {
-        "target": "http://localhost:3000",
+        "target": "https://desafio-senior-frontend-api.herokuapp.com",
         "secure": false
     }
 }
