@@ -48,7 +48,10 @@ export const customCurrencyMaskConfig = {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules }),
+    RouterModule.forRoot(ROUTES, {
+      preloadingStrategy: PreloadAllModules,
+      useHash: true
+    }),
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -58,5 +61,4 @@ export const customCurrencyMaskConfig = {
   providers: [ItemService, NotificationService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
-
+export class AppModule {}
