@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "concurrently \"npm run api\" \"npm run start:proxy\"",
+    "start": "npm run start:proxy",
+    "start-local": "concurrently \"npm run api\" \"npm run start:proxy\"",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
