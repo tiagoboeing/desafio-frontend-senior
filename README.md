@@ -1,5 +1,5 @@
 # Desafio Front-end [![Netlify Status](https://api.netlify.com/api/v1/badges/c1526fa1-21e8-407d-8c66-b98e78d5316c/deploy-status)](https://app.netlify.com/sites/desafio-senior/deploys)
-> ### ([Demo](https://desafio-senior.netlify.com))
+> ### ([Demo](http://desafio-senior.tiagoboeing.com/#/))
 
 ### Vai rodar localmente? 
 Partindo do princípio que você tem Node e Angular instalados...
