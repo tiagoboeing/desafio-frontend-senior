@@ -1,6 +1,10 @@
 # Desafio Front-end [![Netlify Status](https://api.netlify.com/api/v1/badges/c1526fa1-21e8-407d-8c66-b98e78d5316c/deploy-status)](https://app.netlify.com/sites/desafio-senior/deploys)
 > ### ([Demo](https://desafio-senior.tiagoboeing.com/))
 
+![](https://camo.githubusercontent.com/2da13ddd6089857cf2219a18da7340a27d96da52/687474703a2f2f672e7265636f726469742e636f2f4a7047594677385956332e676966)
+
+> Na primeira visita o carregamento pode levar alguns segundos.
+
 ### Vai rodar localmente? 
 Partindo do princípio que você tem Node e Angular instalados...
 - Rode `npm install` para baixar as dependências
